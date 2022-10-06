@@ -8,6 +8,7 @@
 @foreach($showallusers as $users)
 
 
+ <input type="hidden" id="idUsuario" name="idUsuario" value="{{$users['id']}}">
         <div class="list-group ">
                 <li class="list-group-item d-flex justify-content-between align-items-start">
                     <div class="ms-2 me-auto">
@@ -17,13 +18,24 @@
                                     <li class="list-group-item">{{$users['phone']}}</li>
                                     <li class="list-group-item">{{$users['email']}}</li>
                                     <li class="list-group-item">{{$users['created_at']}}</li>
-                                    <li class="list-group-item"><a href="#" class="btn btn-primary">Eviar</a></li>
+                                    <li class="list-group-item"><select id="ProgramSelector" name="ProgramSelector" class="form-select"  aria-label="Default select example">
+                                    <option selected>Seleccione programa</option>
+                                    <option value="1">One</option>                                        
+                                    </select></li>
+                                    <li class="list-group-item"><button type="input"class="btn btn-primary">Enviar</button></li>
                                     
                                 </ul>
+                                
+                                  
                             </div>
-                        </div>                   
+                           
+                        </div>   
+                                    
                 </li>  
+
+                @endforeach 
         </div>
-@endforeach
+        
+
 
 @endsection

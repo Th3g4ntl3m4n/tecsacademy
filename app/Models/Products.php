@@ -20,11 +20,11 @@ class Products extends Model
         'image',    
     ];
 
-    public function user() {
+    public function product_request() {
 
         //lo vinculamos con el modelo User
 
-        return $this->hasMany(User::class);
+        return $this->hasMany(Product_Request::class);
 
     }
 }

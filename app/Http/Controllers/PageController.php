@@ -17,4 +17,8 @@ class PageController extends Controller
     public function pricing() {
         return view ('pricing');
     }
+
+    public function store() {
+        return view ('store');
+    }
 }

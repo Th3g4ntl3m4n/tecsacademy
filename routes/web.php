@@ -5,6 +5,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\firstRegister;
 use App\Http\Controllers\showInformation;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ProductRequestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,7 @@ Route::controller(PageController::class)->group(function(){
     Route::get('/',            'home')->name('home');
     Route::get('/tecsintro',            'tecsIntro')->name('tecsintro');
     Route::get('/precios',            'pricing')->name('pricing');
+   
     
 });
 
@@ -35,6 +37,10 @@ Route::get('/payment', function () {
 Route::get('/termsAndConditions', function () {
     return view('termsAndConditions');
 })->name('termsAndConditions');
+
+Route::get('/store', function () {
+    return view('store');
+})->name('store');
 
 
 
@@ -53,8 +59,19 @@ Route::get('/logout', 'App\Http\Controllers\LogoutController@logout')->name('log
 /* Show All Users */
 Route::get('/showallusers', [showInformation::class, 'ShowAllUsers'])->name('showallusers');
 
+/* Show All Products */
+Route::get('/store', [ProductsController::class, 'ShowAllProducts'])->name('showallproducts');
+
+/* Show All Products in Student Dashboard*/
+
+Route::get('dashboard.student', [ProductsController::class, 'showAllProductsUser'])->name('showallproductsuser');
+
 /* Products Register */
 Route::post('/productRegister', [ProductsController::class, 'productRegister'])->name('productRegister');
+
+/* Formulario enviar correo bienvenida*/
+Route::post('/clickOnSent', 'App\Http\Controllers\ProductRequestController@clickOnSent')->name('clickOnSent');
+
 
 /*Ruta vista registrar producto */
 Route::get('/formProductRegister', function () {
@@ -68,6 +85,8 @@ Route::get('/formProductRegister', function () {
 Route::get('/profile', function () {
     return view('profile');
 })->name('profile');
+
+
 
 require __DIR__.'/auth.php';
 
