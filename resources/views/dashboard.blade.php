@@ -517,7 +517,7 @@ $user_type= Auth::user()->type;
                                 </li>
                                 <li class="sidebar-menu-item">
                                     <a class="sidebar-menu-button"
-                                       href="crm-dashboard.html">
+                                       href="{{route('consultantSells')}}">
                                         <span class="sidebar-menu-text">Sales</span>
                                     </a>
                                 </li>

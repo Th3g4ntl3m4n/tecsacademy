@@ -2,12 +2,14 @@
 
 @section('content')
 
-            <h1>CONTENIDO</h1>
-
+       <br>
+       <br>
+       <br>
+       <br>
             <div class="container">
                 <div class="row">
                     <div class="col-6 text-center">
-                        <h3>Tecs Intro</h3>
+                        <h3>Estas a punto de empezar!</h3>
                         <img class="ml-2" src="{{ asset('images/tecsacademy/tecsintro.jpg')}}" style="width:500px; height:500px;"></img>
                     </div>
                     <div class="col-6">
@@ -89,7 +91,7 @@
                         
                         </div>
                         @auth
-                        <a href="{{ route('paydetails')}}"><button class="btn btn-primary">Ir al Carrito</button></a>
+                        <a href="{{ route('paydetails')}}"><button class="btn btn-primary">Comprar</button></a>
                         @else
                         <a href="{{ route('login')}}"><button class="btn btn-warning">Inicia Sesion</button></a>
                         <a href="{{ route('register')}}">Registrate aquí</a>
@@ -106,9 +108,9 @@
              <!-- jQuery -->
         <script src="{{ asset('vendor/jquery.min.js')}}"></script>
 
-        <!-- JavaScript Bundle with Popper -->
+        <!-- JavaScript Bundle with Popper 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-
+-->
 <!-- Bootstrap -->
 <script src="{{ asset('vendor/popper.min.js')}}"></script>
 <script src="{{ asset('vendor/bootstrap.min.js')}}"></script>

@@ -7,14 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product_Request extends Model
 {
+
+    protected $table = 'product__requests';
+
     use HasFactory;
 
     
 
     protected $fillable = [
-        'id_User',
-        'id_Product',
-        'state',      
+        'idConsultant',
+        'product',
+        'idUser',
+        'status',       
     ];
 
 

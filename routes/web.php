@@ -57,6 +57,11 @@ Route::get('/logout', 'App\Http\Controllers\LogoutController@logout')->name('log
 
 
 /* Show All Users */
+Route::get('/consultantSells', [ProductRequestController::class, 'sells'])->name('consultantSells');
+
+/* show All sells */
+
+/* Show All Users */
 Route::get('/showallusers', [showInformation::class, 'ShowAllUsers'])->name('showallusers');
 
 /* Show All Products */
@@ -69,8 +74,12 @@ Route::get('dashboard.student', [ProductsController::class, 'showAllProductsUser
 /* Products Register */
 Route::post('/productRegister', [ProductsController::class, 'productRegister'])->name('productRegister');
 
+/* Ajax to sent Email */
+
+Route::post('miJqueryAjax','ProductRequestController@create');
+
 /* Formulario enviar correo bienvenida*/
-Route::post('/clickOnSent', 'App\Http\Controllers\ProductRequestController@clickOnSent')->name('clickOnSent');
+Route::post('/showallusers', 'App\Http\Controllers\ProductRequestController@clickOnSent')->name('clickOnSent');
 
 
 /*Ruta vista registrar producto */
