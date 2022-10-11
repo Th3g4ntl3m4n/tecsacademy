@@ -30,7 +30,7 @@ class firstRegister extends Controller
         $user->type = $type;
         $user->save();
 
-        return redirect()->route('home');
+        return redirect()->route('dashboard');
 
     }
 }

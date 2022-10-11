@@ -10,6 +10,12 @@
               content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>TecsAcademy</title>
 
+        
+        <!-- CDN boostrap -->
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+
         <!-- Own Styles -->
         <link href="{{ asset('css/ownstyles.css')}}" rel="stylesheet"
 
@@ -265,7 +271,107 @@
                     <div class="hero container page__container text-center text-md-left py-112pt">
 
 
-                        <!-- Formulario -->                     
+
+<!-- Contenido tecs Intro -->
+
+<div class="container">
+                <div class="row">
+                    <div class="col-6 text-center">
+                        <h3 style="color:#ffffff;">Estas a punto de empezar!</h3>
+                        <img class="ml-2" src="{{ asset('images/tecsacademy/tecsintro.jpg')}}" style="width:500px; height:500px;"></img>
+                    </div>
+                    <div class="col-6">
+                        <h3 style="color:#ffffff;">¿Conoces nuestro curso?</h3>
+                        <p style="color:#ffffff;">Aprender inglés se ha constituido en la mejor herramienta para personas de todo el mundo que buscan comunicarse de una manera efectiva y profesional, no se trata solo de hablar una segunda lengua, se trata de poderse comunicar de manera efectiva en cualquier lugar del mundo donde estes. </p>
+                    <div class="accordion" id="accordionPanelsStayOpenExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                Proposito del curso
+                            </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                            <div class="accordion-body">
+                            Este curso está diseñado para familiarizarse con la prueba antes de tomarla, conocer su metodología y solucionar dudas sobre temas específicos, prepararse con los recursos adecuados como aplicaciones, plataformas de xzestudios etc.
+                            Adicionalmente, Entender el formato de las preguntas en cada una de las habilidades y lograr que su prueba sea todo un éxito.
+                            <strong>Nota:</strong> este no es un curso de inglés, es un curso especifico para preparase para la prueba, el dominio del idioma no depende del curso sino del dominio del idioma de cada candidato.
+
+                            </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                               Contenido del curso
+                            </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                            <div class="accordion-body">
+                        <ul>
+                            <li>    Explicación de cada habilidad de la prueba </li>
+                            <li>	Explicación sobre Marco Común Europeo de referencia</li>
+                            <li>	Entender el sistema de seguridad de la prueba</li>
+                            <li>	Conectividad</li>
+                            <li>	Herramientas</li>
+                            <li>	Oportunidades para alcanzar el nivel</li>
+                            <li>	Calibración </li>
+                            <li>	Ejercitación en teoría de respuestas</li>
+                            <li>	¿Como luce la prueba?</li>
+                            <li>	¿Cómo manejar el tiempo?</li>
+                            <li>	Tips y practica de conversación.</li>
+                            <li>	Evolución de conversación</li>
+                            <li>	Tips gramática</li>
+                            <li>	Evaluación gramática</li>
+                            <li>	Técnicas de lectura corta y practica</li>
+                            <li>	Tips de lectura</li>
+                            <li>	Técnicas de comprensión auditiva y practica </li>
+                            <li>	Tips escucha</li>
+                            <li>	Como leer y entender el certificado.</li>
+                            <li>	Aplicación de examen simulacro EDE (Englis Diagnosis Exam)</li>
+                        </ul>
+
+                            </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                                Metodologia del curso
+                            </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                            <div class="accordion-body">
+                                <ul>
+                                        <li>Clases con profesores en vivo.</li>
+                                        <li>30 Horas en total.</li>
+                                        <li>3 semanas de curso.</li>
+                                        <li>Sesiones de 2 horas diarias.</li>
+                                        <li>15 clases en total.</li>
+                                </ul>
+
+                                        De lunes a viernes 6/8 pm básico: Básico comprende A0/-A1- A1 (Seleccione los días de la semana y el horario de acuerdo a su nivel)
+
+                                </ul>
+                            </div>
+                            </div>                            
+                        </div>
+
+                        
+                        </div>
+                        @auth
+                        <a href="#f1"><button class="btn btn-primary">Comenzar ahora</button></a>
+                        @else
+                        <a href="#f1"><button class="btn btn-warning">Inicia Sesion</button></a>
+                        <a href="#f1" style="color:#ffffff;">Registrate aquí</a>
+                        @endauth
+                 </div>
+               </div>
+               
+             </div>
+<!-- end contenido tecsintro -->
+
+                    
+                        <!-- Formulario                     
 <br>
 <br>
                         <div class="form-register">
@@ -299,7 +405,7 @@
                                 <label>Password</label>
                                 </div>
                                 -->
-                                <!-- <a href="{{ route('home')}}" value="submit" type="button"> -->
+                                <!-- <a href="{{ route('home')}}" value="submit" type="button"> 
                                     <button class="a" value="submit" type="submit">
                                 <span></span>
                                 <span></span>
@@ -311,6 +417,11 @@
                             </div>
                     </div>
                         <!-- End Formulario -->
+
+
+
+
+
                     </div>
                 </div>
             </div>
@@ -318,6 +429,109 @@
             <!-- // END Header -->
 
             <!-- Header Layout Content -->
+
+            <br>
+            <br>
+            <br>
+            <br>
+
+   <div class="container" >
+
+
+            <div class="mdk-header-layout__content page-content ">
+            <h2 id="f1"> Formulario de Registro </h2>
+                <div class="border-bottom-2 py-16pt navbar-light bg-white border-bottom-2">
+                    <div class="container page__container">
+
+                    
+
+            <form method="POST" action="{{ route('firstRegister') }}">
+               @csrf
+               <div class="mb-3">
+                    <label class="form-label">Nombre</label>
+                    <input type="text" name="name" id="name"required="" class="form-control" placeholder="name@example.com">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Telefono</label>
+                    <input type="text" name="phone" id="phone"required="" class="form-control" placeholder="name@example.com">
+                </div>
+                <div class="mb-3">
+                <label class="form-label">Pais</label>
+                <select class="form-select" name="contry" id="contry">
+                        <option selected>Selecciona tu pais</option>
+                        <option value="1">Colombia</option>
+                        <option value="2">Mexico</option>
+                        <option value="3">Ecuador</option>
+                </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email address</label>
+                    <input type="text" name="email" id="email"required="" class="form-control" placeholder="name@example.com">
+                </div>   
+                
+                <button type="Submit" class="btn btn-primary">Empezar ahora!</button>
+
+            </form>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+            <!-- Formulario antiguo                  
+<br>
+<br>
+
+
+                        <div class="form-register">
+
+                        
+
+                        <div class="login-box">
+                            <h2>Queremos Acompañarte</h2>
+                            <form method="POST" action="{{ route('firstRegister') }}">
+                            @csrf
+                            
+                                <div class="user-box">
+                                <input type="text" name="name" id="name" required="">
+                                <label>Ingresa tu nombre completo</label>
+                                </div>                                
+                                <div class="user-box">
+                                <input type="text" name="phone" id="phone" required="">
+                                <label>Ingresa tu telefono</label>
+                                </div>
+                                <div class="user-box">
+                                <input type="text" name="email" id="email"required="">
+                                <label>Ingresa tu Email</label>
+                                </div>
+                                <div class="user-box">
+                                <input type="text" name="contry" id="contry"required="">
+                                <label>Ingresa tu País</label>
+                                </div>
+                                <!--
+                                <div class="user-box">
+                                <input type="password" name="" required="">
+                                <label>Password</label>
+                                </div>
+                                -->
+                                <!-- <a href="{{ route('home')}}" value="submit" type="button"> 
+                                    <button class="a" value="submit" type="submit">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                Enviar                                
+                                    </button>
+                            </form>
+                            </div>
+                    </div>
+
+                        <!-- End Formulario -->
+
+            <!-- start barra informativa 
             <div class="mdk-header-layout__content page-content ">
 
                 <div class="border-bottom-2 py-16pt navbar-light bg-white border-bottom-2">
@@ -353,6 +567,8 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- end Barra informativa -->
 
                 <div class="page-section border-bottom-2">
                     <div class="container page__container">
@@ -2679,6 +2895,8 @@
         <script src="{{ asset('vendor/jquery.min.js')}}"></script>
 
         <!-- Bootstrap -->
+        <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
         <script src="{{ asset('vendor/popper.min.js')}}"></script>
         <script src="{{ asset('vendor/bootstrap.min.js')}}"></script>
 
@@ -2698,7 +2916,6 @@
         <script src="{{ asset('js/preloader.js')}}"></script>
 
         
-
         <script>
             (function() {
                 'use strict';
