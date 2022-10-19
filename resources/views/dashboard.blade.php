@@ -61,7 +61,7 @@ $user_type= Auth::user()->type;
 
     <body class="layout-sticky-subnav layout-default ">
 
-  
+  <!--
         <div class="preloader">
             <div class="sk-chase">
                 <div class="sk-chase-dot"></div>

@@ -292,10 +292,7 @@
                             </h2>
                             <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
                             <div class="accordion-body">
-                            Este curso está diseñado para familiarizarse con la prueba antes de tomarla, conocer su metodología y solucionar dudas sobre temas específicos, prepararse con los recursos adecuados como aplicaciones, plataformas de xzestudios etc.
-                            Adicionalmente, Entender el formato de las preguntas en cada una de las habilidades y lograr que su prueba sea todo un éxito.
-                            <strong>Nota:</strong> este no es un curso de inglés, es un curso especifico para preparase para la prueba, el dominio del idioma no depende del curso sino del dominio del idioma de cada candidato.
-
+                            {{$product_form->objetive }}
                             </div>
                             </div>
                         </div>
@@ -459,15 +456,17 @@
                 <label class="form-label">Pais</label>
                 <select class="form-select" name="contry" id="contry">
                         <option selected>Selecciona tu pais</option>
-                        <option value="1">Colombia</option>
-                        <option value="2">Mexico</option>
-                        <option value="3">Ecuador</option>
+                        <option value="CO">Colombia</option>
+                        <option value="MX">Mexico</option>
+                        <option value="EC">Ecuador</option>
                 </select>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Email address</label>
                     <input type="text" name="email" id="email"required="" class="form-control" placeholder="name@example.com">
-                </div>   
+                </div>  
+                
+                <input type="hidden" id="id_product" name="id_product" value="{{ $product_form->id }}"/>
                 
                 <button type="Submit" class="btn btn-primary">Empezar ahora!</button>
 

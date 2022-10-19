@@ -1,57 +1,25 @@
 <?php
-
-use App\Models\Product_Request;
-use App\Models\User;
-use App\Models\Products;
-use App\pwdscripts\sendmail;
-
-// Include varible file config.php
-
-$url = 'https://checkout.payulatam.com/ppp-web-gateway-payu/'; // Producción
-	//$url = 'https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/'; // Sandbox
-	
-	$ApiKey = 'dIHtIJW8fs64q414hiVrg25h66'; // Obtener este dato dela cuenta de Payu
-	$merchantId = '848807'; // Obtener este dato dela cuenta de Payu
-	$accountId = '856322'; // Obtener este dato dela cuenta de Payu
-	//$description = 'payUtecs2go'; //Descripción del pedido
-	$referenceCode = 'tecs2go001'; // Referencia Unica del pedido
-	//$amount = '12000'; //Es el monto total de la transacción. Puede contener dos dígitos decimales. Ej. 10000.00 ó 10000.
-	$tax = '0'; // Es el valor del IVA de la transacción, si se envía el IVA nulo el sistema aplicará el 19% automáticamente. Puede contener dos dígitos decimales. Ej: 19000.00. En caso de no tener IVA debe enviarse en 0.
-	$taxReturnBase = '0'; // Es el valor base sobre el cual se calcula el IVA. En caso de que no tenga IVA debe enviarse en 0.
-	//$currency = 'USD'; // Moneda
-	$test = '0'; // Variable para poder utilizar tarjetas de crédito de pruebas, los valores pueden ser 1 ó 0.
-	//$buyerEmail = 'test@test.com'; // Respuesta por Payu al comprador
-	$responseUrl = 'https://iltoexams.com/ilto3/tecs-academy/view/payment-response.php'; // URL de respuesta,
-	$confirmationUrl = 'https://iltoexams.com/ilto3/tecs-academy/view/payment-confirmation.php';
-
-
-// auth y saca el ID del usuario logueado
-    $userId= auth()->id();
-    $user = User::find($userId);  
-
+ $url = 'https://checkout.payulatam.com/ppp-web-gateway-payu/'; // Producción
+ //$url = 'https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/'; // Sandbox
  
-    // me traigo el producto que solicitó el usuario y que no ha pagado, para mostrarle un botón BIEN GRANDE DE PAGAR
-    $product_request = Product_Request::where('idUser', '=', $user->id)->where('state', '=', 0)->get();
-   
-    $product=Products::find($product_request[0]["product"]);
-    
+ $ApiKey = 'dIHtIJW8fs64q414hiVrg25h66'; // Obtener este dato dela cuenta de Payu
+ $merchantId = '848807'; // Obtener este dato dela cuenta de Payu
+ $accountId = '856322'; // Obtener este dato dela cuenta de Payu
+ //$description = 'payUtecs2go'; //Descripción del pedido
+ $referenceCode = 'tecs2go001'; // Referencia Unica del pedido
+ $amount = '12000'; //Es el monto total de la transacción. Puede contener dos dígitos decimales. Ej. 10000.00 ó 10000.
+ $tax = '0'; // Es el valor del IVA de la transacción, si se envía el IVA nulo el sistema aplicará el 19% automáticamente. Puede contener dos dígitos decimales. Ej: 19000.00. En caso de no tener IVA debe enviarse en 0.
+ $taxReturnBase = '0'; // Es el valor base sobre el cual se calcula el IVA. En caso de que no tenga IVA debe enviarse en 0.
+ $currency = 'USD'; // Moneda
+ $test = '0'; // Variable para poder utilizar tarjetas de crédito de pruebas, los valores pueden ser 1 ó 0.
+ //$buyerEmail = 'test@test.com'; // Respuesta por Payu al comprador
+ $responseUrl = 'https://iltoexams.com/ilto3/tecs-academy/view/payment-response.php'; // URL de respuesta,
+ $confirmationUrl = 'https://iltoexams.com/ilto3/tecs-academy/view/payment-confirmation.php';
 
-    ///llamar el product_request que tiene este usuario l
-   // con el product request, ud obtiene el ID del producto
-   // con el ID del producto, ud obtiene Toda la información del producto
-
-       
-    $referenceCode = 0;
-    $amount = $product->price;
-    $firmaMd5 = 0;
-    $email_request = $user->email;
-    $id_request = $userId;
-
-    //Variables transaccion
-    $payU_flag = 0;
-    $id_taker = $userId;
-    $id_request = $product_request[0]["id"];
-    
+ $payU_flag = 0;
+ $id_taker = 1;
+ $id_request = 1;
+ $id_prices = 160000;
 
 ?>
 <div class="container">
@@ -68,62 +36,65 @@ $url = 'https://checkout.payulatam.com/ppp-web-gateway-payu/'; // Producción
                                         </div>
                                         <div class="col">
                                                 <br>
-                                        <!-- <p class="fs-1">Es un curso basado en la experiencia de los evaluadores de la compañía ILTO ( International Language Testing Organization) la intención de este curso es brindar a los tomadores las herramientas necesarias para llegar mejor preparado a la prueba internacional TECS</p>-->
+                                        <p class="fs-1">Es un curso basado en la experiencia de los evaluadores de la compañía ILTO ( International Language Testing Organization) la intención de este curso es brindar a los tomadores las herramientas necesarias para llegar mejor preparado a la prueba internacional TECS</p>
 
 
-<div class="container">
-<!-- inicio Boton pay u -->
 
-<!--']
-        <div class="row" style="text-align:center;">
+                                        <!-- inicio Boton pay u -->
+
+                                        <div class="row" style="text-align:center;">
                             
                             <div class="col-xs-5 col-sm-5 col-md-5">
                                 <div class="form-group">
--->
                                     <?php
                                         if($payU_flag == 0 ){
-                                           
-                                            $currency = $product->currency;
-                                            $referenceCode = $id_taker."_".$id_request."_".strtotime(date("h:i:s"));
+                                            $tecs2go_amount = 160000;
+                                            $currency = $currency;
+                                            $referenceCode = $id_taker."_".$id_request."_".date("h:i:s");
                                         
-                                            $firma = "$ApiKey~$merchantId~$referenceCode~$amount~$currency";
+                                            $firma = "$ApiKey~$merchantId~$referenceCode~$tecs2go_amount~$currency";
                                             $firmaMd5 = md5($firma);
     
                                             ?>
                                             
                                             <div class="form-group"><br>
-                                                    <!-- <img src="/ilto3/images/tecs-intro.png" alt="TECS-INTRO"><br><br> -->
+                                                    <img src="/ilto3/images/tecs-intro.png" alt="TECS-INTRO"><br><br>
                                                     <h3><b>TECS INTRO</b></h3>
-                                                     <p style="text-align:justify;">Es un curso basado en la experiencia de los evaluadores de la compañía ILTO ( International Language Testing Organization) la intención de este curso es brindar a los tomadores las herramientas necesarias para llegar mejor preparado a la prueba internacional TECS<br><br></p>
-                                                    
+                                                     <p style="text-align:justify;">Este curso está diseñado para familiarizarse con la prueba antes de tomarla y conocer su metodología, solucionar dudas, prepararse con los recursos adecuados, entender el formato de las  preguntas de cada una de las habilidades y lograr que su prueba sea todo un éxito.<br><br></p>
+                                                     <h3 class="btn btn-danger" style="margin:auto;cursor:none;font-size: 14px !important;font-weight: 700;">Este NO es un curso de Inglés,<br>es un curso de preparación para el examen TECS.</h3><br><br><br>
+                                                        
                                                         
                                                         <div id="payU-form">
-                                                          
+                                                            <h4>!Si pagas en la mañana, puedes ingresar al curso al siguiente día!</h4>
+                                                            <h3><small>Lunes, miércoles y viernes (Intermedio).<br>
+                                                            Martes, jueves y sábados. (Básico).</small></h3>
+                                                        <p><label><b>Opción 1:</b>  09:00 AM a 11:00 AM <br>
+                                                                <b>Opción 2:</b>  08:00 PM a 10:00 PM.</label><br></p>
                                                             <input name="apikey" id="apikey" type="hidden"  value="<?php echo $ApiKey; ?>" >
-                                                            <h3><span>${{ number_format($product->price) }} <?php $currency ?></span></h3> <!-- echo $prices["currency"] --> 
+                                                            <h3><span>$ 160.000 <?php $currency ?></span></h3> <!-- echo $prices["currency"] --> 
                                                         <!--    <form method="post" action="https://checkout.payulatam.com/ppp-web-gateway-payu/">
                                                             <form method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">-->
                                                                 <form method="post" action="<?php echo $url; ?>">
                                                                  <input name="merchantId" id="merchantId" type="hidden"  value="<?php echo $merchantId; ?>" >
                                                                   <input name="accountId"  type="hidden"    value="<?php echo $accountId; ?>" >
-                                                                  <input name="description" type="hidden"   value="{{ $product->nameProduct }}" >
+                                                                  <input name="description" type="hidden"   value="TECS-INTRO" >
                                                                   <input name="referenceCode" id="referenceCode" type="hidden"  value="<?php echo $referenceCode; ?>" > <!-- -->
-                                                                  <input name="amount" id="amount" type="hidden"        value="<?php echo $amount; ?>" >        <!-- -->
+                                                                  <input name="amount" id="amount" type="hidden"        value="<?php echo $tecs2go_amount; ?>" >        <!-- -->
                                                                   <input name="tax"     type="hidden"       value="<?php echo $tax; ?>" >
                                                                   <input name="taxReturnBase" type="hidden" value="<?php echo $taxReturnBase; ?>" >
                                                                   <input name="currency" id="currency" type="hidden"        value="<?php echo $currency; ?>" >
                                                                   <input name="signature"  id="signature"  type="hidden"    value="<?php echo $firmaMd5; ?>" >
                                                                   <input name="test"    type="hidden"       value="<?php echo $test; ?>" >
-                                                                  <input name="buyerEmail"  type="hidden"    value="<?php echo $user->email; ?>" > <!-- echo $tecs_intro_request["email"] ?> -->
-                                                                  <input name="payerDocument" type="hidden" id="payerDocument"  value="<?php echo $user->id; ?>" > <!-- $tecs_intro_request["id_user"] ?> -->
-                                                                  <input name="buyerFullName" type="hidden"  value="<?php echo  $user->name; ?>" > <!-- utf8_encode($tecs_intro_request["nombres"])." ".utf8_encode($tecs_intro_request["apellidos"]) -->
-                                                                  <input name="mobilePhone" type="hidden"  value="<?php echo $user->phone; ?>" > <!-- $client["telefono"] -->
-                                                                  <input name="telephone" type="hidden"  value="<?php echo $user->phone; ?>" > <!-- $client["telefono"] -->
+                                                                  <input name="buyerEmail"  type="hidden"    value="<?php echo $email_request; ?>" > <!-- echo $tecs_intro_request["email"] ?> -->
+                                                                  <input name="payerDocument" type="hidden" id="payerDocument"  value="<?php echo $id_request; ?>" > <!-- $tecs_intro_request["id_user"] ?> -->
+                                                                  <input name="buyerFullName" type="hidden"  value="<?php echo  $user_name; ?>" > <!-- utf8_encode($tecs_intro_request["nombres"])." ".utf8_encode($tecs_intro_request["apellidos"]) -->
+                                                                  <input name="mobilePhone" type="hidden"  value="<?php echo $user_phone; ?>" > <!-- $client["telefono"] -->
+                                                                  <input name="telephone" type="hidden"  value="<?php echo $user_phone; ?>" > <!-- $client["telefono"] -->
                                                                   <input name="shippingAddress" type="hidden"  value="None" >
                                                                   <input name="shippingCity" type="hidden"  value="BOGOTA" >
                                                                   <input name="shippingCountry" type="hidden"  value="COL" >
                                                                   <input name="confirmationUrl" type="hidden" value="<?php echo $confirmationUrl; ?>" >
-                                                                 <!-- Cambio --><input name="Submit"  class="btn btn-primary" type="submit"  value="Pagar en Línea" > 
+                                                                 <!-- Cambio --><input name="Submit"  class="btn btn-success" type="submit"  value="Pagar en Línea" > 
                                                             </form>
                                                         </div>
                                                 
@@ -221,10 +192,10 @@ $url = 'https://checkout.payulatam.com/ppp-web-gateway-payu/'; // Producción
                             </div>
                             <!-- end boton payU -->
 
-                            </div>
 
 
-                                       <!--  <button type="submit" class="btn btn-primary"><a href="{{ route('payButton')}}">Suscribete</a></button> -->
+
+                                        <button type="submit" class="btn btn-primary"><a href="{{ route('tecsintro')}}">Suscribete</a></button>
                                         </div>
                                         </div>
                                         <br>

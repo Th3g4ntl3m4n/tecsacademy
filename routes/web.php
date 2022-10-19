@@ -22,6 +22,7 @@ Route::controller(PageController::class)->group(function(){
     Route::get('/',            'home')->name('home');
     Route::get('/tecsintro',            'tecsIntro')->name('tecsintro');
     Route::get('/precios',            'pricing')->name('pricing');
+    Route::get('/stage',            'stage')->name('stage');
    
     
 });
@@ -70,6 +71,10 @@ Route::get('/store', [ProductsController::class, 'ShowAllProducts'])->name('show
 /* Show All Products in Student Dashboard*/
 
 Route::get('dashboard.student', [ProductsController::class, 'showAllProductsUser'])->name('showallproductsuser');
+
+/* pay page in Student Dashboard*/
+
+Route::get('dashboard.studentPay', [ProductRequestController::class, 'payButton'])->name('payButton');
 
 /* Products Register */
 Route::post('/productRegister', [ProductsController::class, 'productRegister'])->name('productRegister');

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 require('sendmail.php');
+require('config.php');
+
+
 /*-------------- payU ----------------------
 include(dirname(_FILE_).'/config.php');*/
 
@@ -99,4 +102,44 @@ class ProductRequestController extends Controller
             return view('dashboard.consultantSells')->with('idConsultant', $idConsultant)->with('showallsells',$showallsells);
 
         }
+
+        /* Metodo de pago */
+
+
+        public function payButton(Request $request)
+        
+        {   
+
+                        
+                // auth y saca el ID del usuario
+
+                $userId= auth()->id();
+                $user = User::find()
+                dd($userId =auth());
+                $userEmail= auth()->email();
+                $userName= auth()->name();
+                $userPhone= auth()->phone();
+
+
+            $data = array();
+              //variables para pasar por data
+              $data['accountId'] = $userId;
+              $data['$referenceCode'] = 0;
+              $data['$tecs2go_amount'] = 0;
+              $data['$firmaMd5'] = 0;
+              $data['$email_request'] = $userEmail;
+              $data['$id_request'] = $userId;
+              $data['$user_name'] = $userName;
+              $data['$user_phone'] =  $userPhone;
+              $data['$currency'] = 'USD';
+
+              dd($data);
+
+              return view('dashboard.studentPay')->with('data', $data);
+
+             
+
+
+        }
+
 }
