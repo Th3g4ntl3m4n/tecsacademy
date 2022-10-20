@@ -17,7 +17,9 @@ class Products extends Model
         'nameProduct',
         'price',
         'description',    
-        'image',    
+        'image', 
+        'objetive',
+        'currency',   
     ];
 
     public function product_request() {

@@ -2,6 +2,6 @@
 <div class="container">
 
         <h1>Hello {{ auth()->user()->name}}</h1>
-        <h1>Ur a teacher</h1>
+        <button><a href="{{ route('teacherStudentsView')}}">Consultar</a></button>
 
 </div>

@@ -209,9 +209,9 @@ $user_type= Auth::user()->type;
                 <div class="container page__container page-section d-flex flex-column">
                     <p class="text-70 brand mb-24pt">
                         <img class="brand-icon"
-                             src="../../public/images/logo/black-70@2x.png"
+                             src="{{ asset('images/tecsacademy/academy.png')}}"
                              width="30"
-                             alt="Luma"> TecsAcademy
+                             alt=""> TecsAcademy
                     </p>
                     <p class="measure-lead-max text-50 small mr-8pt">Luma is a beautifully crafted user interface for modern Education Platforms, including Courses & Tutorials, Video Lessons, Student and Teacher Dashboard, Curriculum Management, Earnings and Reporting, ERP, HR, CMS, Tasks, Projects, eCommerce and more.</p>
                     <p class="mb-8pt d-flex">
@@ -239,13 +239,13 @@ $user_type= Auth::user()->type;
 
                     <!-- Sidebar Content -->
 
-                    <a href="index.html"
+                    <a href="{{route('home')}}"
                        class="sidebar-brand ">
                         <!-- <img class="sidebar-brand-icon" src="../../public/images/illustration/student/128/white.svg" alt="Luma"> -->
 
                         <span class="avatar avatar-xl sidebar-brand-icon h-auto">
 
-                            <span class="avatar-title rounded bg-primary"><img src="../../public/images/illustration/student/128/white.svg"
+                            <span class="avatar-title "><img src="{{('images/tecsacademy/academy.png')}}"
                                      class="img-fluid"
                                      alt="logo" /></span>
 
@@ -254,7 +254,7 @@ $user_type= Auth::user()->type;
 <!-- nav list slider -->
 
 
-                        <span>TecsAcademy</span>
+<span>TecsAcademy</span>
                     </a>
 
                     (@switch($user_type)
@@ -510,390 +510,65 @@ $user_type= Auth::user()->type;
                                 </li>
                                 <li class="sidebar-menu-item">
                                     <a class="sidebar-menu-button"
-                                       href="{{ route('consultantSells')}}">
+                                       href="{{route('consultantSells')}}">
                                         <span class="sidebar-menu-text">Sales</span>
                                     </a>
-                                </li>
-
-                                <!-- 
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="hr-dashboard.html">
-                                        <span class="sidebar-menu-text">HR Dashboard</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="employees.html">
-                                        <span class="sidebar-menu-text">Employees</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="staff.html">
-                                        <span class="sidebar-menu-text">Staff</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="leaves.html">
-                                        <span class="sidebar-menu-text">Leaves</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button disabled"
-                                       href="departments.html">
-                                        <span class="sidebar-menu-text">Departments</span>
-                                    </a>
-                                </li>
-                                     <li class="sidebar-menu-item">
-  <a class="sidebar-menu-button disabled" href="documents.html">
-    <span class="sidebar-menu-text">Documents</span>
-  </a>
-</li>
-<li class="sidebar-menu-item">
-  <a class="sidebar-menu-button disabled" href="attendance.html">
-    <span class="sidebar-menu-text">Attendance</span>
-  </a>
-</li>
-<li class="sidebar-menu-item">
-  <a class="sidebar-menu-button disabled" href="recruitment.html">
-    <span class="sidebar-menu-text">Recruitment</span>
-  </a>
-</li>
-<li class="sidebar-menu-item">
-  <a class="sidebar-menu-button disabled" href="payroll.html">
-    <span class="sidebar-menu-text">Payroll</span>
-  </a>
-</li>
-<li class="sidebar-menu-item">
-  <a class="sidebar-menu-button disabled" href="training.html">
-    <span class="sidebar-menu-text">Training</span>
-  </a>
-</li>
-<li class="sidebar-menu-item">
-  <a class="sidebar-menu-button disabled" href="employee-profile.html">
-    <span class="sidebar-menu-text">Employee Profile</span>
-  </a>
-</li>
-<li class="sidebar-menu-item">
-  <a class="sidebar-menu-button disabled" href="accounting.html">
-    <span class="sidebar-menu-text">Accounting</span>
-  </a>
-</li>
-<li class="sidebar-menu-item">
-  <a class="sidebar-menu-button disabled" href="inventory.html">
-    <span class="sidebar-menu-text">Inventory</span>
-  </a>
-</li> 
+                                </li>                          
                             </ul>
                         </li>
-                        <li class="sidebar-menu-item">
+                    </ul>
+            @break  
+            
+            @case(4)                
+                    
+            <div class="sidebar-heading">CONTADOR</div>
+                    <ul class="sidebar-menu">
+
+                    <li class="sidebar-menu-item">
                             <a class="sidebar-menu-button"
+                               href="{{ route('home')}}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">home</span>
+                                <span class="sidebar-menu-text">Home</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button js-sidebar-collapse"
                                data-toggle="collapse"
-                               href="#productivity_menu">
-                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">access_time</span>
-                                Productivity
+                               href="#enterprise_menu">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">donut_large</span>
+                                Modulo de pagos
                                 <span class="ml-auto sidebar-menu-toggle-icon"></span>
                             </a>
                             <ul class="sidebar-submenu collapse sm-indent"
-                                id="productivity_menu">
+                                id="enterprise_menu">
                                 <li class="sidebar-menu-item">
                                     <a class="sidebar-menu-button"
-                                       href="projects.html">
-                                        <span class="sidebar-menu-text">Projects</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="tasks-board.html">
-                                        <span class="sidebar-menu-text">Tasks Board</span>
+                                       href="{{ route('counterView')}}">
+                                        <span class="sidebar-menu-text">Pagos Pendientes</span>
                                     </a>
                                 </li>
                                 <li class="sidebar-menu-item">
                                     <a class="sidebar-menu-button"
-                                       href="tasks-list.html">
-                                        <span class="sidebar-menu-text">Tasks List</span>
+                                       href="{{ route('counterAprobed')}}">
+                                        <span class="sidebar-menu-text">Pagos Aprobados</span>
                                     </a>
                                 </li>
                                 <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button disabled"
-                                       href="kanban.html">
-                                        <span class="sidebar-menu-text">Kanban</span>
+                                    <a class="sidebar-menu-button"
+                                       href="{{route('counterAllPays')}}">
+                                        <span class="sidebar-menu-text">Total pagos recibidos</span>
                                     </a>
                                 </li>
-                                <!-- <li class="sidebar-menu-item">
-  <a class="sidebar-menu-button disabled" href="task-details.html">
-    <span class="sidebar-menu-text">Task Details</span>
-  </a>
-</li>
-<li class="sidebar-menu-item">
-  <a class="sidebar-menu-button disabled" href="team-members.html">
-    <span class="sidebar-menu-text">Team Members</span>
-  </a>
-</li> 
+                 
                             </ul>
-                        </li>
-                        <li class="sidebar-menu-item">
-                            <a class="sidebar-menu-button"
-                               data-toggle="collapse"
-                               href="#ecommerce_menu">
-                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">shopping_cart</span>
-                                eCommerce
-                                <span class="ml-auto sidebar-menu-toggle-icon"></span>
-                            </a>
-                            <ul class="sidebar-submenu collapse sm-indent"
-                                id="ecommerce_menu">
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="ecommerce.html">
-                                        <span class="sidebar-menu-text">Shop Dashboard</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button disabled"
-                                       href="edit-product.html">
-                                        <span class="sidebar-menu-text">Edit Product</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="sidebar-menu-item">
-                            <a class="sidebar-menu-button"
-                               data-toggle="collapse"
-                               href="#messaging_menu">
-                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">message</span>
-                                Messaging
-                                <span class="sidebar-menu-badge badge badge-accent badge-notifications ml-auto">2</span>
-                                <span class="sidebar-menu-toggle-icon"></span>
-                            </a>
-                            <ul class="sidebar-submenu collapse sm-indent"
-                                id="messaging_menu">
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="messages.html">
-                                        <span class="sidebar-menu-text">Messages</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="email.html">
-                                        <span class="sidebar-menu-text">Email</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="sidebar-menu-item">
-                            <a class="sidebar-menu-button"
-                               data-toggle="collapse"
-                               href="#cms_menu">
-                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">content_copy</span>
-                                CMS
-                                <span class="ml-auto sidebar-menu-toggle-icon"></span>
-                            </a>
-                            <ul class="sidebar-submenu collapse sm-indent"
-                                id="cms_menu">
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="cms-dashboard.html">
-                                        <span class="sidebar-menu-text">CMS Dashboard</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="posts.html">
-                                        <span class="sidebar-menu-text">Posts</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="sidebar-menu-item">
-                            <a class="sidebar-menu-button"
-                               data-toggle="collapse"
-                               href="#account_menu">
-                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">account_box</span>
-                                Account
-                                <span class="ml-auto sidebar-menu-toggle-icon"></span>
-                            </a>
-                            <ul class="sidebar-submenu collapse sm-indent"
-                                id="account_menu">
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="pricing.html">
-                                        <span class="sidebar-menu-text">Pricing</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="login.html">
-                                        <span class="sidebar-menu-text">Login</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="signup.html">
-                                        <span class="sidebar-menu-text">Signup</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="signup-payment.html">
-                                        <span class="sidebar-menu-text">Payment</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="reset-password.html">
-                                        <span class="sidebar-menu-text">Reset Password</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="change-password.html">
-                                        <span class="sidebar-menu-text">Change Password</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="edit-account.html">
-                                        <span class="sidebar-menu-text">Edit Account</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="edit-account-profile.html">
-                                        <span class="sidebar-menu-text">Profile &amp; Privacy</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="edit-account-notifications.html">
-                                        <span class="sidebar-menu-text">Email Notifications</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="edit-account-password.html">
-                                        <span class="sidebar-menu-text">Account Password</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="billing.html">
-                                        <span class="sidebar-menu-text">Subscription</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="billing-upgrade.html">
-                                        <span class="sidebar-menu-text">Upgrade Account</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="billing-payment.html">
-                                        <span class="sidebar-menu-text">Payment Information</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="billing-history.html">
-                                        <span class="sidebar-menu-text">Payment History</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="billing-invoice.html">
-                                        <span class="sidebar-menu-text">Invoice</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="sidebar-menu-item">
-                            <a class="sidebar-menu-button"
-                               data-toggle="collapse"
-                               href="#community_menu">
-                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">people_outline</span>
-                                Community
-                                <span class="ml-auto sidebar-menu-toggle-icon"></span>
-                            </a>
-                            <ul class="sidebar-submenu collapse sm-indent"
-                                id="community_menu">
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="teachers.html">
-
-                                        <span class="sidebar-menu-text">Browse Teachers</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="student-profile.html">
-
-                                        <span class="sidebar-menu-text">Student Profile</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="teacher-profile.html">
-
-                                        <span class="sidebar-menu-text">Teacher Profile</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="blog.html">
-
-                                        <span class="sidebar-menu-text">Blog</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="blog-post.html">
-
-                                        <span class="sidebar-menu-text">Blog Post</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="faq.html">
-                                        <span class="sidebar-menu-text">FAQ</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="help-center.html">
-                                          
-                                        <span class="sidebar-menu-text">Help Center</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="discussions.html">
-                                        <span class="sidebar-menu-text">Discussions</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="discussion.html">
-                                        <span class="sidebar-menu-text">Discussion Details</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button"
-                                       href="discussions-ask.html">
-                                        <span class="sidebar-menu-text">Ask Question</span>
-                                    </a>
-                                </li>
-                                -->
-                                </ul>
                         </li>
                     </ul>
             @break            
             @default
                 @include('auth.login')
         @endswitch
+                    
                     <!-- // END Sidebar Content -->
 
                 </div>

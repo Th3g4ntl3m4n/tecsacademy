@@ -60,7 +60,7 @@ class firstRegister extends Controller
               //send email
               $dat = "{From: 'noreply@iltoexams.com', To: '$to', Cc:'tecs2go@iltoexams.com', Subject: '$subject', HtmlBody: '$htmlBody'}";//array('From' => 'noreply@iltoexams.com', 'To'=>'dokho_02@hotmail.com', 'Subject'=>'Hola Chris Fer', 'HtmlBody'=>'<strong>Hello</strong> dear Postmark user.');
               
-            /*  sendEmail($dat); */
+             sendEmail($dat); 
 
     // envia el correo electrónico
         //devuelve la vista "stage" donde enviara al usuario a revizar el correo

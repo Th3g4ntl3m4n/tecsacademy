@@ -114,8 +114,8 @@ class ProductRequestController extends Controller
                 // auth y saca el ID del usuario
 
                 $userId= auth()->id();
-                $user = User::find()
-                dd($userId =auth());
+                $user = User::find();
+                /* dd($userId =auth()); */
                 $userEmail= auth()->email();
                 $userName= auth()->name();
                 $userPhone= auth()->phone();

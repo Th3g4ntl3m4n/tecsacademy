@@ -30,10 +30,11 @@ $url = 'https://checkout.payulatam.com/ppp-web-gateway-payu/'; // Producción
     $user = User::find($userId);  
 
  
-    // me traigo el producto que solicitó el usuario y que no ha pagado, para mostrarle un botón BIEN GRANDE DE PAGAR
-    $product_request = Product_Request::where('idUser', '=', $user->id)->where('state', '=', 0)->get();
+  // me traigo el producto que solicitó el usuario y que no ha pagado, para mostrarle un botón BIEN GRANDE DE PAGAR
+  $product_request = Product_Request::where('idUser', '=', $user->id)->where('state', '=', 0)->get();
    
-    $product=Products::find($product_request[0]["product"]);
+ 
+  $product=Products::find($product_request[0]["product"]);
     
 
     ///llamar el product_request que tiene este usuario l
@@ -95,7 +96,7 @@ $url = 'https://checkout.payulatam.com/ppp-web-gateway-payu/'; // Producción
                                                     <!-- <img src="/ilto3/images/tecs-intro.png" alt="TECS-INTRO"><br><br> -->
                                                     <h3><b>TECS INTRO</b></h3>
                                                      <p style="text-align:justify;">Es un curso basado en la experiencia de los evaluadores de la compañía ILTO ( International Language Testing Organization) la intención de este curso es brindar a los tomadores las herramientas necesarias para llegar mejor preparado a la prueba internacional TECS<br><br></p>
-                                                    
+                                                     <a href="{{ route('termsAndConditions')}}">Terminos y condiciones</a>
                                                         
                                                         <div id="payU-form">
                                                           

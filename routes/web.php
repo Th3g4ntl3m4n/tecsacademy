@@ -6,6 +6,7 @@ use App\Http\Controllers\firstRegister;
 use App\Http\Controllers\showInformation;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProductRequestController;
+use App\Http\Controllers\UserPaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +65,22 @@ Route::get('/consultantSells', [ProductRequestController::class, 'sells'])->name
 
 /* Show All Users */
 Route::get('/showallusers', [showInformation::class, 'ShowAllUsers'])->name('showallusers');
+
+/* Show pending users */
+Route::get('/counterView', [UserPaymentController::class, 'counter'])->name('counterView');
+
+/* Show Aproved users in teachers view*/
+Route::get('/teacherStudentsView', [UserPaymentController::class, 'teacher'])->name('teacherStudentsView');
+
+/* Show Aproved users in counter view*/
+Route::get('/counterAprobed', [UserPaymentController::class, 'counterAprobed'])->name('counterAprobed');
+
+/* Show all pays users in counter view*/
+Route::get('/counterAllPays', [UserPaymentController::class, 'counterAllPays'])->name('counterAllPays');
+
+
+/* confirm pay */
+Route::get('/ClickonConfirmation', [UserPaymentController::class, 'ClickonConfirmation'])->name('ClickonConfirmation');
 
 /* Show All Products */
 Route::get('/store', [ProductsController::class, 'ShowAllProducts'])->name('showallproducts');

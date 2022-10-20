@@ -207,7 +207,10 @@ $user_type= Auth::user()->type;
             @break
             @case(3)
                 @include('dashboard.consultant')
-            @break            
+            @break  
+            @case(4)
+                @include('dashboard.counter')
+            @break           
             @default
                 @include('auth.login')
         @endswitch
@@ -218,9 +221,9 @@ $user_type= Auth::user()->type;
                 <div class="container page__container page-section d-flex flex-column">
                     <p class="text-70 brand mb-24pt">
                         <img class="brand-icon"
-                             src="../../public/images/logo/black-70@2x.png"
+                             src="{{ asset('images/tecsacademy/academy.png')}}"
                              width="30"
-                             alt="Luma"> TecsAcademy
+                             alt=""> TecsAcademy
                     </p>
                     <p class="measure-lead-max text-50 small mr-8pt">Luma is a beautifully crafted user interface for modern Education Platforms, including Courses & Tutorials, Video Lessons, Student and Teacher Dashboard, Curriculum Management, Earnings and Reporting, ERP, HR, CMS, Tasks, Projects, eCommerce and more.</p>
                     <p class="mb-8pt d-flex">
@@ -248,13 +251,13 @@ $user_type= Auth::user()->type;
 
                     <!-- Sidebar Content -->
 
-                    <a href="index.html"
+                    <a href="{{route('home')}}"
                        class="sidebar-brand ">
                         <!-- <img class="sidebar-brand-icon" src="../../public/images/illustration/student/128/white.svg" alt="Luma"> -->
 
                         <span class="avatar avatar-xl sidebar-brand-icon h-auto">
 
-                            <span class="avatar-title rounded bg-primary"><img src="../../public/images/illustration/student/128/white.svg"
+                            <span class="avatar-title"><img src="{{ asset('images/tecsacademy/academy.png')}}"
                                      class="img-fluid"
                                      alt="logo" /></span>
 
@@ -894,6 +897,53 @@ $user_type= Auth::user()->type;
                                     </a>
                                 </li>
                                 -->
+                            </ul>
+                        </li>
+                    </ul>
+            @break  
+            
+            @case(4)                
+                    
+            <div class="sidebar-heading">CONTADOR</div>
+                    <ul class="sidebar-menu">
+
+                    <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button"
+                               href="{{ route('home')}}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">home</span>
+                                <span class="sidebar-menu-text">Home</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button js-sidebar-collapse"
+                               data-toggle="collapse"
+                               href="#enterprise_menu">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">donut_large</span>
+                                Modulo de pagos
+                                <span class="ml-auto sidebar-menu-toggle-icon"></span>
+                            </a>
+                            <ul class="sidebar-submenu collapse sm-indent"
+                                id="enterprise_menu">
+                                <li class="sidebar-menu-item">
+                                    <a class="sidebar-menu-button"
+                                       href="{{ route('counterView')}}">
+                                        <span class="sidebar-menu-text">Pagos Pendientes</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-menu-item">
+                                    <a class="sidebar-menu-button"
+                                       href="{{ route('counterAprobed')}}">
+                                        <span class="sidebar-menu-text">Pagos Aprobados</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-menu-item">
+                                    <a class="sidebar-menu-button"
+                                       href="{{route('counterAllPays')}}">
+                                        <span class="sidebar-menu-text">Total pagos recibidos</span>
+                                    </a>
+                                </li>
+                 
                             </ul>
                         </li>
                     </ul>

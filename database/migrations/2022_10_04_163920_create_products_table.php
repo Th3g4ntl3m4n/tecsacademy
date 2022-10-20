@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('price');
             $table->mediumText('description');
             $table->string('image');          
+            $table->string('objetive');
+            $table->string('currency');  
 
             $table->timestamps();
         });
