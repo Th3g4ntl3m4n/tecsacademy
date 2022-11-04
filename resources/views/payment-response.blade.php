@@ -1,21 +1,31 @@
 <?php
-	if(str_replace('www.', '', $_SERVER['SERVER_NAME']) == 'iltoexams.com'){
-            	    $conn = @mysqli_connect('localhost', 'iltoexam_newvers', 'Ilto.2015', 'iltoexam_newversion');      
-         }else{
-             	    $conn = @mysqli_connect('localhost', 'thetec_newvers', 'Ilto.2015', 'thetec_iltoexam_newversion');
-         }
+
+use App\Models\Product_Request;
+use App\Models\User;
+use App\Models\Products;
+use App\Models\user_payment;
+use App\pwdscripts\sendmail;
+
+	$url = 'https://checkout.payulatam.com/ppp-web-gateway-payu/'; // Producción
+	//$url = 'https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/'; // Sandbox
 	
-	if (!$conn) {
-	    echo "Error: " . mysqli_connect_error();
-		exit();
-	}
+	$ApiKey = 'dIHtIJW8fs64q414hiVrg25h66'; // Obtener este dato dela cuenta de Payu
+	$merchantId = '848807'; // Obtener este dato dela cuenta de Payu
+	$accountId = '856322'; // Obtener este dato dela cuenta de Payu
+	//$description = 'payUtecs2go'; //Descripción del pedido
+	$referenceCode = 'tecs2go001'; // Referencia Unica del pedido
+	//$amount = '12000'; //Es el monto total de la transacción. Puede contener dos dígitos decimales. Ej. 10000.00 ó 10000.
+	$tax = '0'; // Es el valor del IVA de la transacción, si se envía el IVA nulo el sistema aplicará el 19% automáticamente. Puede contener dos dígitos decimales. Ej: 19000.00. En caso de no tener IVA debe enviarse en 0.
+	$taxReturnBase = '0'; // Es el valor base sobre el cual se calcula el IVA. En caso de que no tenga IVA debe enviarse en 0.
+	//$currency = 'USD'; // Moneda
+	$test = '0'; // Variable para poder utilizar tarjetas de crédito de pruebas, los valores pueden ser 1 ó 0.
+	//$buyerEmail = 'test@test.com'; // Respuesta por Payu al comprador
+	$responseUrl = 'https://iltoexams.com/ilto3/tecs-academy/view/payment-response.php'; // URL de respuesta,
+	$confirmationUrl = 'https://iltoexams.com/ilto3/tecs-academy/view/payment-confirmation.php';
 	
-	
-	
-	include(dirname(__FILE__).'/config.php');
 	// emailing
-	require("../../../sendmail.php");  
-	
+	//require("../../../sendmail.php");  
+	/*
 	$merchant_id = $_REQUEST['merchantId'];
 	$referenceCode = $_REQUEST['referenceCode'];
 	$id_taker = $_REQUEST['payerDocument'];
@@ -34,13 +44,18 @@
 	$transactionId = $_REQUEST['transactionId'];
 
 	$data = explode("_", $referenceCode);
-	$id_taker = $data[0];	
-	$id_request = $data[1];
-	/*
+	$id_taker = $data[0]; //id user autoincremental	
+	$id_request = $data[1]; //id product request autoincremental
+	*/
+
+
+	
+
+	//datos para probar la insersion de respuesta PayUlatam
 	$merchant_id = 848807;
-	$referenceCode = "1102359739_2_04:10:53";
+	$referenceCode = "10_6_04:10:53";
 	$id_taker = 1102359739;
-	$TX_VALUE = 40;
+	$TX_VALUE = 16000;
 	$New_value = number_format($TX_VALUE, 1, '.', '');
 	$currency = "COP";
 	$transactionState = 4;
@@ -48,35 +63,43 @@
 	$firma = "$ApiKey~$merchant_id~$referenceCode~$New_value~$currency~$transactionState";
 	$firmaMd5 = md5($firma);
 	$firma = $firmaMd5;
-	$reference_pol = $_REQUEST['reference_pol'];
-	$cus = $_REQUEST['cus'];
-	$description = "TECS-INTRO";
+	$reference_pol = "REFERENCE POL";
+	//$reference_pol = $_REQUEST['reference_pol'];
+	$cus = "CUS";
+	//$cus = $_REQUEST['cus'];
+	$description = "Tecs Intro";
 	$pseBank = "Davivienda";
-	$lapPaymentMethod = $_REQUEST['lapPaymentMethod'];
+	
+	//$lapPaymentMethod = $_REQUEST['lapPaymentMethod'];
+	$lapPaymentMethod = "credit card";
 	$transactionId = "f024a45b-b436-480c-8617-692a4fc3e25f";
 
 	$data = explode("_", $referenceCode);
-	$id_taker = $data[0];	
-	$id_request = $data[1];
-	
-	
-	
-*/	
-	//guardamos la transacción si es aprobada
-	$SQL = "INSERT INTO `proctorv_user_payment`(`id_request`, `id_user`, `date_generate`, `payment_number`, `status`, `id_transaction`, `sell_reference`, `transaction_reference`, `bank`, `val`, `CURRENCY`, `entity`) 
-		    VALUES ('".$id_request."', '".$id_taker."', NOW(), NULL,  '".$transactionState."', '".$transactionId."', '".$description."', '".$referenceCode."', '".$pseBank."', '".$TX_VALUE."', '".$currency."', '".$lapPaymentMethod."')";
-		   
-	//query
-	if ($conn->query($SQL) === TRUE) {
-	} else {
-		echo "Error: " . $sql . "<br>" . $conn->error;
-	}
-	
-		//get the payment_id 
-	$SQL = "SELECT id_proctorv_user_payment FROM `proctorv_user_payment` WHERE `id_request` = '".$id_request."' and `sell_reference` = '".$referenceCode."' ";
-	$query = mysqli_query($conn, $SQL);
-	$request =mysqli_fetch_assoc($request);
-	
+	$id_taker = $data[0]; //id user autoincremental	
+	$id_request = $data[1]; //id product request autoincremental
+
+
+	$payment = new user_payment();	
+	$payment->id_user = $id_taker;
+	$payment->id_request = $id_request ;
+	$payment->status = $transactionState;
+	$payment->sell_reference = $description;
+	$payment->payment_number = $referenceCode;
+	$payment->date_generate = $referenceCode;
+	$payment->id_trasaction = $transactionId;
+	$payment->transaction_reference = $referenceCode;
+	$payment->bank = $pseBank;
+	$payment->val = $TX_VALUE ;
+	$payment->currency = $currency;
+	$payment->entity = "MASTERCARD";
+	$payment->extra1 = $currency;
+	$payment->extra2 = $currency;
+
+	$payment->save();
+
+
+
+
 
 
 	switch ($transactionState) {
@@ -90,18 +113,18 @@
 				<li><b>Descripción:</b>'.$description.'</li>
 				<li><b>Estado de la transaccion:</b> '.$estadoTx.'</li>
 				<li><b>ID de la transaccion:</b>'.$transactionId.'</li>
-				<li><b>Referencia de la venta:</b>'.$reference_pol.'</li>
+			
 				<li><b>Referencia de la transaccion:</b>'.$referenceCode.'</li>
 				<li><b>Valor total:</b>'.number_format($TX_VALUE).'</li>
 				<li><b>Moneda:</b>'.$currency.'</li>
-				<li><b>Entidad:</b>'.$lapPaymentMethod.'</li>
+				
 			</ul>										
 													
 			Por favor verifique la transferencia en la plataforma de PayU.</p><br>
 			Support Team - ILTO<br/>
 			<img src="https://iltoexams.com/logo_ILTO.png" alt="iltoexams"></p>';   
 			
-			
+			/*
 			//update consultant_history payment
             $SQL = "UPDATE `consultant_history` SET `payment_status` = '4', description = '".$referenceCode."',  id_proctorv_user_payment = '".$request["id_proctorv_user_payment"]."', updated_at = NOW() WHERE `consultant_history`.`id_product` = '".$id_request."' ;";
             if ($conn->query($SQL) === TRUE) {
@@ -127,7 +150,7 @@
 			
 			//send email
 			$dat = "{From: 'noreply@iltoexams.com', To: 'tecs2go@iltoexams.com', Cc:'ogarcia@iltoexams.com', Subject: '$subject', HtmlBody: '$htmlBody'}";//array('From' => 'noreply@iltoexams.com', 'To'=>'dokho_02@hotmail.com', 'Subject'=>'Hola Chris Fer', 'HtmlBody'=>'<strong>Hello</strong> dear Postmark user.');
-		//	sendEmail($dat);
+		//	sendEmail($dat);*/
 	    break;
 	    case 6:
 	    	$estadoTx = "Transacción rechazada";
@@ -154,7 +177,7 @@
 			Por favor verifique la transferencia en la plataforma de PayU.</p><br>
 			Support Team - ILTO<br/>
 			<img src="https://iltoexams.com/logo_ILTO.png" alt="iltoexams"></p>';  
-			
+			/*
 			//update photo in taker profile
             $SQL = "UPDATE `consultant_history` SET `payment_status` = '7', description = '".$referenceCode."',  id_proctorv_user_payment = '".$request["id_proctorv_user_payment"]."', updated_at = NOW() WHERE `consultant_history`.`id_product` = '".$id_request."' ;";
             if ($conn->query($SQL) === TRUE) {
@@ -179,7 +202,7 @@
 			//send email
 			$dat = "{From: 'noreply@iltoexams.com', To: 'tecs2go@iltoexams.com', Cc:'ogarcia@iltoexams.com', Subject: '$subject', HtmlBody: '$htmlBody'}";//array('From' => 'noreply@iltoexams.com', 'To'=>'dokho_02@hotmail.com', 'Subject'=>'Hola Chris Fer', 'HtmlBody'=>'<strong>Hello</strong> dear Postmark user.');
 		//	sendEmail($dat);
-		
+		*/
 		   case 104:
 	        $estadoTx = "Error";
 	        break;
@@ -276,8 +299,8 @@ select.input-lg {
 							<div class="col-xs-4 col-md-4">
 							</div>
 						</div>
-							<input type="hidden" name="id_request" value="<?php echo $_GET["id"] ?>"/>
-							<input type="hidden" name="id_taker" value="<?php echo $proctorv_request["id_user"] ?>"/>
+							<input type="hidden" name="id_request" value="<?php echo $id_request?>"/>
+							<input type="hidden" name="id_taker" value="<?php echo $id_taker ?>"/>
 				    	<div class="row" style="text-align:center;">
 				    			<h2 style="text-align:center;">Sección de pagos </h2><br>	
 							

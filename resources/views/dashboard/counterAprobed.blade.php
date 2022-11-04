@@ -26,7 +26,7 @@
    
         <tr>
         <th scope="row">{{$aprobed['id']}}</th>
-        <td>{{$username[0]->name}}</td>
+        <td>Jefferson Hernandez</td>
         <td>{{$aprobed['created_at']}}</td>
         <td>{{$aprobed['status']}}</td>
         <td>{{$aprobed['transaction_reference']}}</td>

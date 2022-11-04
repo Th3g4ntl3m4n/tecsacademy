@@ -28,6 +28,18 @@ Route::controller(PageController::class)->group(function(){
     
 });
 
+/* Prueba de vistas pagos */
+
+Route::get('/payment-response', function () {
+    return view('payment-response');
+})->name('payment-response');
+
+Route::get('/payment-confirmation', function () {
+    return view('payment-confirmation');
+})->name('payment-confirmation');
+
+/* End pruebas rutas pagos */
+
 Route::get('/paydetails', function () {
     return view('paydetails');
 })->name('paydetails');
@@ -80,7 +92,8 @@ Route::get('/counterAllPays', [UserPaymentController::class, 'counterAllPays'])-
 
 
 /* confirm pay */
-Route::get('/ClickonConfirmation', [UserPaymentController::class, 'ClickonConfirmation'])->name('ClickonConfirmation');
+Route::post('/ClickonConfirmation', 'App\Http\Controllers\UserPaymentController@ClickonConfirmation')->name('ClickonConfirmation');
+
 
 /* Show All Products */
 Route::get('/store', [ProductsController::class, 'ShowAllProducts'])->name('showallproducts');

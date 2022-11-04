@@ -47,7 +47,7 @@
                             <div class="col-xs-5 col-sm-5 col-md-5">
                                 <div class="form-group">
                                     <?php
-                                        if($payU_flag == 0 ){
+                                        if($payU_flag == 0 ){ // 0 es porque no hay pago, entonces muestra un botón para pagar
                                             $tecs2go_amount = 160000;
                                             $currency = $currency;
                                             $referenceCode = $id_taker."_".$id_request."_".date("h:i:s");

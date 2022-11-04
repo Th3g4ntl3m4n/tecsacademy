@@ -1,11 +1,43 @@
 <?php
 
+use App\pwdscripts\sendmail;
+use App\Models\User;
+use App\Models\Products;
+
+
+// Include varible file config.php
+
+$url = 'https://checkout.payulatam.com/ppp-web-gateway-payu/'; // Producción
+	//$url = 'https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/'; // Sandbox
+	
+	$ApiKey = 'dIHtIJW8fs64q414hiVrg25h66'; // Obtener este dato dela cuenta de Payu
+	$merchantId = '848807'; // Obtener este dato dela cuenta de Payu
+	$accountId = '856322'; // Obtener este dato dela cuenta de Payu
+	//$description = 'payUtecs2go'; //Descripción del pedido
+	$referenceCode = 'tecs2go001'; // Referencia Unica del pedido
+	//$amount = '12000'; //Es el monto total de la transacción. Puede contener dos dígitos decimales. Ej. 10000.00 ó 10000.
+	$tax = '0'; // Es el valor del IVA de la transacción, si se envía el IVA nulo el sistema aplicará el 19% automáticamente. Puede contener dos dígitos decimales. Ej: 19000.00. En caso de no tener IVA debe enviarse en 0.
+	$taxReturnBase = '0'; // Es el valor base sobre el cual se calcula el IVA. En caso de que no tenga IVA debe enviarse en 0.
+	//$currency = 'USD'; // Moneda
+	$test = '0'; // Variable para poder utilizar tarjetas de crédito de pruebas, los valores pueden ser 1 ó 0.
+	//$buyerEmail = 'test@test.com'; // Respuesta por Payu al comprador
+	$responseUrl = 'https://iltoexams.com/ilto3/tecs-academy/view/payment-response.php'; // URL de respuesta,
+	$confirmationUrl = 'https://iltoexams.com/ilto3/tecs-academy/view/payment-confirmation.php';
+
+
+// auth y saca el ID del usuario logueado
+    $userId= auth()->id();
+    $user = User::find($userId);  
+
+
 /*register method
 *
 *
 */
 
 //database connection
+
+/*
 
 	if(str_replace('www.', '', $_SERVER['SERVER_NAME']) == 'iltoexams.com'){
             	    $conn = @mysqli_connect('localhost', 'iltoexam_newvers', 'Ilto.2015', 'iltoexam_newversion');      
@@ -23,6 +55,8 @@
 	include(dirname(__FILE__).'/config.php');
 	// emailing
 	require("../../../sendmail.php");  
+
+	*/
 	
 	$merchant_id = $_REQUEST['merchantId'];
 	$referenceCode = $_REQUEST['referenceCode'];
@@ -50,16 +84,11 @@
 	
 	//if the firm is valid
 	if($firmaMd5 === $sign){
-		//guardamos la transacción si es aprobada
-		$SQL = "INSERT INTO `proctorv_user_payment`(`id_request`, `id_user`, `date_generate`, `payment_number`, `status`, `id_transaction`, `sell_reference`, `transaction_reference`, `bank`, `val`, `CURRENCY`, `entity`) 
-			    VALUES ('".$id_request."', '".$id_taker."', NOW(), NULL,  '".$transactionState."', '".$transactionId."', '".$description."', '".$referenceCode."', '".$pseBank."', '".$TX_VALUE."', '".$currency."', '".$lapPaymentMethod."')";
-			   
-		//query
-		if ($conn->query($SQL) === TRUE) {
-		} else {
-			echo "Error: " . $sql . "<br>" . $conn->error;
-		}
-		
+	// crea una instancia de un pago nuevo el cual va a guardar
+
+	// 2. Iguala todo lo que trae en el request a los atributos del objeto que va a guardar
+
+	// 3. imprime dependiendo el estado de la transacción
 		
 		//get the payment_id 
 		$SQL = "SELECT id_proctorv_user_payment FROM `proctorv_user_payment` WHERE `id_request` = '".$id_request."' and `sell_reference` = 'TECS2GO' ";
@@ -96,7 +125,7 @@
 	            }
 				
 				//send email
-				$dat = "{From: 'noreply@iltoexams.com', To: 'tecs2go@iltoexams.com', Cc:'ogarcia@iltoexams.com', Subject: '$subject', HtmlBody: '$htmlBody'}";//array('From' => 'noreply@iltoexams.com', 'To'=>'dokho_02@hotmail.com', 'Subject'=>'Hola Chris Fer', 'HtmlBody'=>'<strong>Hello</strong> dear Postmark user.');
+				//$dat = "{From: 'noreply@iltoexams.com', To: 'tecs2go@iltoexams.com', Cc:'ogarcia@iltoexams.com', Subject: '$subject', HtmlBody: '$htmlBody'}";//array('From' => 'noreply@iltoexams.com', 'To'=>'dokho_02@hotmail.com', 'Subject'=>'Hola Chris Fer', 'HtmlBody'=>'<strong>Hello</strong> dear Postmark user.');
 				//sendEmail($dat);
 			    break;
 		    case 104:

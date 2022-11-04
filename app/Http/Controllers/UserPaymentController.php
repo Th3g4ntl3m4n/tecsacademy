@@ -54,11 +54,48 @@ class UserPaymentController extends Controller
        }
 
 
-    public function ClickonConfirmation() {
+    /*
+    * CONFIRMAR PAGO PENDIENTE
+    *
+    */
 
-        $user_payment = new user_payment();
-        $user_payment ->status = 4;
-        $user_payment ->save();
+    public function ClickonConfirmation(Request $request) {
+
+         //$_REQUEST todo lo que sea con esta variable es Ajax
+        
+        $payment_id= $request->id_payment;     
+                        
+        //debo traerme el objeto que voy a actualizar, no es crear un nuevo objeto
+        $payment  = user_payment::find($payment_id);
+        $payment ->status = 4;      
+       
+        $payment->save();
+
+        $result = "Payment Aprobbed!";  
+
+      return response()->json($result);
     }
+
+    
+    /*
+    *
+     Funcion para denegar pago pedniente
+    *
+    */
+
+    public function cliconDenegate(Request $request){
+        // El request que definimos como parametro no se debe definir de nuevo porque ya lo traemos en la funcion
+
+        // Traigo de la vista el id_payment 
+        $payment_id = $request->id_payment;
+
+        $payment = user_payment::find($payment_id);
+        $payment ->status = 4;     
+
+    
+    }
+
+
+
 
 }

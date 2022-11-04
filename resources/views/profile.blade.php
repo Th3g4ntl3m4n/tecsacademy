@@ -105,21 +105,24 @@ $user_type= Auth::user()->type;
 
                         <!-- Navbar Brand -->
 
-                        <a href="index.html"
+                        <a href="{{ route('home')}}"
                            class="navbar-brand mr-16pt">
 
                             <span class="avatar avatar-sm navbar-brand-icon mr-0 mr-lg-8pt">
 
-                                <span class="avatar-title rounded bg-primary"><img src="{{ asset('images/illustration/student/128/white.svg')}}"
+                               
+                            <span><img src="{{ asset('images/tecsacademy/academy.png')}}"
                                          alt="logo"
-                                         class="img-fluid" /></span>
+                                         style="width:80px" class="img-fluid" /></span>
 
                             </span>
 
-                            <span class="d-none d-lg-block">Luma</span>
+                        <!-- <span class="d-none d-lg-block">Luma</span> -->
                         </a>
 
                         <!-- // END Navbar Brand -->
+
+                        <!--
 
                         <span class="d-none d-md-flex align-items-center mr-16pt">
 
@@ -148,7 +151,7 @@ $user_type= Auth::user()->type;
                             </small>
                         </span>
 
-                        <!-- Navbar Search -->
+                        <!-- Navbar Search 
 
                         <form class="search-form navbar-search d-none d-md-flex mr-16pt"
                               action="index.html">
@@ -329,7 +332,7 @@ $user_type= Auth::user()->type;
 
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <div class="dropdown-header"><strong>Account</strong></div>
+                                    <div class="dropdown-header"><strong>Cuenta</strong></div>
                                     <a class="dropdown-item"
                                        href="edit-account.html">Edit Account</a>
                                     <a class="dropdown-item"
@@ -355,10 +358,8 @@ $user_type= Auth::user()->type;
 
             <br>
             <br>
-            <br>
-            <br>
-            <br>
-            <br>
+            
+           
            
             (@switch($user_type)
                 @case(0)
@@ -380,9 +381,9 @@ $user_type= Auth::user()->type;
                 <div class="container page__container page-section d-flex flex-column">
                     <p class="text-70 brand mb-24pt">
                         <img class="brand-icon"
-                             src="../../public/images/logo/black-70@2x.png"
+                             src="{{ asset('images/tecsacademy/academy.png')}}"
                              width="30"
-                             alt="Luma"> Luma
+                             alt=""> TecsAcademy
                     </p>
                     <p class="measure-lead-max text-50 small mr-8pt">Luma is a beautifully crafted user interface for modern Education Platforms, including Courses & Tutorials, Video Lessons, Student and Teacher Dashboard, Curriculum Management, Earnings and Reporting, ERP, HR, CMS, Tasks, Projects, eCommerce and more.</p>
                     <p class="mb-8pt d-flex">

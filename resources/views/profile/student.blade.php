@@ -1,3 +1,4 @@
+
 <!-- Header Layout Content -->
 <div class="mdk-header-layout__content page-content ">
 
@@ -8,11 +9,32 @@
              class="mr-md-32pt mb-32pt mb-md-0"
              alt="student">
         <div class="flex mb-32pt mb-md-0">
-            <h2 class="text-white mb-0">Laza Bogdan</h2>
+            <h2 class="text-white mb-0">{{ auth()->user()->name}}</h2>
             <p class="lead text-white-50 d-flex align-items-center">Student <span class="ml-16pt d-flex align-items-center"><i class="material-icons icon-16pt mr-4pt">opacity</i> 2,300 IQ</span></p>
         </div>
-        <a href=""
-           class="btn btn-outline-white">Follow</a>
+        <a href="{{ route('dashboard')}}"
+           class="btn btn-outline-white">Completa tu perfil</a>
+    </div>
+</div>
+
+<div class="page-section bg-alt border-bottom-2">
+    <div class="container page__container">
+        <div class="row">
+            <div class="col-md-6">
+                <h4>About me</h4>
+                <p class="text-70">Fueled by my passion for understanding the nuances of cross-cultural advertising, I consider myself a forever student, eager to both build on my academic foundations in psychology and sociology and stay in tune with the latest digital marketing strategies through continued coursework.</p>
+            </div>
+            <div class="col-md-6">
+                <h4>Connect</h4>
+                <p class="text-70">I’m currently working as a freelance marketing director and always interested in a challenge. Here’s how to reach out and connect.</p>
+                <div class="d-flex align-items-center">
+                    <a href=""
+                       class="text-accent fab fa-facebook-square font-size-24pt mr-8pt"></a>
+                    <a href=""
+                       class="text-accent fab fa-twitter-square font-size-24pt"></a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

@@ -1,3 +1,5 @@
+
+
 @extends('dashboard.dashboardTemplate')
 
 @section('content')
@@ -17,19 +19,19 @@
     </thead>
     <tbody>
 
-    @foreach($teacher_list as $aprobed)
+
+    @foreach($teacher_list as $list)
     <!--  consultar el nombre del usuario porque tiene el ID -->
     <?php
-     $username  = DB::table('users')->where('id', '=', $aprobed['id_user'])->get();
-     
+     $username = DB::table('users')->where('id', '=', $list['id_user'])->get();     
     ?>
    
         <tr>
-        <th scope="row">{{$aprobed['id']}}</th>
-        <td>{{$username[0]->name}}</td>
-        <td>{{$aprobed['created_at']}}</td>
-        <td>{{$aprobed['status']}}</td>
-        <td>{{$aprobed['transaction_reference']}}</td>
+        <th scope="row">{{$list['id']}}</th>       
+        <td>Jefferson Hernandez <td>
+        <td>{{$list['created_at']}}</td>
+        <td>{{$list['status']}}</td>
+        <td>{{$list['transaction_reference']}}</td>
         <td>        
         <button class="btn btn-warning"><a href="#">Comunicate con el estudiante</a></button>
         </td>

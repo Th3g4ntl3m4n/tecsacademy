@@ -32,7 +32,7 @@ class Product_Request extends Model
 
     public function products() {
 
-        //lo vinculamos con el modelo User
+        //lo vinculamos con el modelo Products
 
         return $this->hasMany(Products::class);
 

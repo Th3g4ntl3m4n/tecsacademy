@@ -10,7 +10,7 @@
     <thead>
         <tr>
         <th scope="col">ID</th>
-        <th scope="col">Nombre</th>
+       
         <th scope="col">Fecha</th>
         <th scope="col">Estado</th>
         <th scope="col">Referencia</th>
@@ -23,12 +23,13 @@
     <!--  consultar el nombre del usuario porque tiene el ID -->
     <?php
      $username  = DB::table('users')->where('id', '=', $aprobed['id_user'])->get();
-     
+    
     ?>
+     
    
         <tr>
         <th scope="row">{{$aprobed['id']}}</th>
-        <td>{{$username[0]->name}}</td>
+        
         <td>{{$aprobed['created_at']}}</td>
         <td>{{$aprobed['status']}}</td>
         <td>{{$aprobed['transaction_reference']}}</td>

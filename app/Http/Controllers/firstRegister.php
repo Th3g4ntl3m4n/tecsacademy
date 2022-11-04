@@ -71,19 +71,18 @@ class firstRegister extends Controller
         
     // auth y saca el ID del consultor
 
-    $idConsultant= "1518"; // Defino codigo de usuario por default       
+        $idConsultant= "1518"; // Defino codigo de usuario por default       
 
     // id_product y saca toda la información del Producto 
 
-        $product = Products::find($request->id_product);
+        /* $product = Products::find($request->id_product); */
             
-    // guarda en la DB el product Request
-   
+    // guarda en la DB el product Request 
   
 
         $product_request = new Product_Request();  
         $product_request->idConsultant = $idConsultant;     
-        $product_request->product = $product->id;
+        $product_request->product = 1;
         $product_request->idUser =  $user->id;   
         $product_request->state = 0;    
         $product_request->save();

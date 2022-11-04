@@ -268,112 +268,17 @@
                         </ul>
                     </div>
 
-                    <div class="hero container page__container text-center text-md-left py-112pt">
-
-
-
-<!-- Contenido tecs Intro -->
-
-<div class="container">
-                <div class="row">
-                    <div class="col-6 text-center">
-                        <h3 style="color:#ffffff;">Estas a punto de empezar!</h3>
-                        <img class="ml-2" src="{{ asset('images/tecsacademy/tecsintro.jpg')}}" style="width:500px; height:500px;"></img>
-                    </div>
-                    <div class="col-6">
-                        <h3 style="color:#ffffff;">¿Conoces nuestro curso?</h3>
-                        <p style="color:#ffffff;">Aprender inglés se ha constituido en la mejor herramienta para personas de todo el mundo que buscan comunicarse de una manera efectiva y profesional, no se trata solo de hablar una segunda lengua, se trata de poderse comunicar de manera efectiva en cualquier lugar del mundo donde estes. </p>
-                    <div class="accordion" id="accordionPanelsStayOpenExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                                Proposito del curso
-                            </button>
-                            </h2>
-                            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
-                            <div class="accordion-body">
-                            {{$product_form->objetive }}
-                            </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                               Contenido del curso
-                            </button>
-                            </h2>
-                            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
-                            <div class="accordion-body">
-                        <ul>
-                            <li>    Explicación de cada habilidad de la prueba </li>
-                            <li>	Explicación sobre Marco Común Europeo de referencia</li>
-                            <li>	Entender el sistema de seguridad de la prueba</li>
-                            <li>	Conectividad</li>
-                            <li>	Herramientas</li>
-                            <li>	Oportunidades para alcanzar el nivel</li>
-                            <li>	Calibración </li>
-                            <li>	Ejercitación en teoría de respuestas</li>
-                            <li>	¿Como luce la prueba?</li>
-                            <li>	¿Cómo manejar el tiempo?</li>
-                            <li>	Tips y practica de conversación.</li>
-                            <li>	Evolución de conversación</li>
-                            <li>	Tips gramática</li>
-                            <li>	Evaluación gramática</li>
-                            <li>	Técnicas de lectura corta y practica</li>
-                            <li>	Tips de lectura</li>
-                            <li>	Técnicas de comprensión auditiva y practica </li>
-                            <li>	Tips escucha</li>
-                            <li>	Como leer y entender el certificado.</li>
-                            <li>	Aplicación de examen simulacro EDE (Englis Diagnosis Exam)</li>
-                        </ul>
-
-                            </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                                Metodologia del curso
-                            </button>
-                            </h2>
-                            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
-                            <div class="accordion-body">
-                                <ul>
-                                        <li>Clases con profesores en vivo.</li>
-                                        <li>30 Horas en total.</li>
-                                        <li>3 semanas de curso.</li>
-                                        <li>Sesiones de 2 horas diarias.</li>
-                                        <li>15 clases en total.</li>
-                                </ul>
-
-                                        De lunes a viernes 6/8 pm básico: Básico comprende A0/-A1- A1 (Seleccione los días de la semana y el horario de acuerdo a su nivel)
-
-                                </ul>
-                            </div>
-                            </div>                            
-                        </div>
-
-                        
-                        </div>
-                        @auth
-                        <a href="#f1"><button class="btn btn-primary">Comenzar ahora</button></a>
-                        @else
-                        <a href="#f1"><button class="btn btn-warning">Inicia Sesion</button></a>
-                        <a href="#f1" style="color:#ffffff;">Registrate aquí</a>
-                        @endauth
-                 </div>
-               </div>
-               
-             </div>
-<!-- end contenido tecsintro -->
-
                     
-                        <!-- Formulario                     
-<br>
-<br>
-                        <div class="form-register">
 
-                        
+
+
+                   
+                        <!-- Formulario -->                
+<br>
+<br>
+<div class="hero container page__container text-center text-md-left py-112pt">               
+        <div class="container"> 
+                <div class="form-register">                      
 
                         <div class="login-box">
                             <h2>Queremos Acompañarte</h2>
@@ -400,9 +305,9 @@
                                 <div class="user-box">
                                 <input type="password" name="" required="">
                                 <label>Password</label>
-                                </div>
-                                -->
-                                <!-- <a href="{{ route('home')}}" value="submit" type="button"> 
+                                </div> -->
+                                
+                                 <a href="{{ route('home')}}" value="submit" type="button"> 
                                     <button class="a" value="submit" type="submit">
                                 <span></span>
                                 <span></span>
@@ -422,7 +327,7 @@
                     </div>
                 </div>
             </div>
-
+            </div>
             <!-- // END Header -->
 
             <!-- Header Layout Content -->
@@ -430,107 +335,9 @@
             <br>
             <br>
             <br>
-            <br>
-
-   <div class="container" >
 
 
-            <div class="mdk-header-layout__content page-content ">
-            <h2 id="f1"> Formulario de Registro </h2>
-                <div class="border-bottom-2 py-16pt navbar-light bg-white border-bottom-2">
-                    <div class="container page__container">
-
-                    
-
-            <form method="POST" action="{{ route('firstRegister') }}">
-               @csrf
-               <div class="mb-3">
-                    <label class="form-label">Nombre</label>
-                    <input type="text" name="name" id="name"required="" class="form-control" placeholder="name@example.com">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Telefono</label>
-                    <input type="text" name="phone" id="phone"required="" class="form-control" placeholder="name@example.com">
-                </div>
-                <div class="mb-3">
-                <label class="form-label">Pais</label>
-                <select class="form-select" name="contry" id="contry">
-                        <option selected>Selecciona tu pais</option>
-                        <option value="CO">Colombia</option>
-                        <option value="MX">Mexico</option>
-                        <option value="EC">Ecuador</option>
-                </select>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Email address</label>
-                    <input type="text" name="email" id="email"required="" class="form-control" placeholder="name@example.com">
-                </div>  
-                
-                <input type="hidden" id="id_product" name="id_product" value="{{ $product_form->id }}"/>
-                
-                <button type="Submit" class="btn btn-primary">Empezar ahora!</button>
-
-            </form>
-
-</div>
-</div>
-</div>
-</div>
-
-
-
-
-            <!-- Formulario antiguo                  
-<br>
-<br>
-
-
-                        <div class="form-register">
-
-                        
-
-                        <div class="login-box">
-                            <h2>Queremos Acompañarte</h2>
-                            <form method="POST" action="{{ route('firstRegister') }}">
-                            @csrf
-                            
-                                <div class="user-box">
-                                <input type="text" name="name" id="name" required="">
-                                <label>Ingresa tu nombre completo</label>
-                                </div>                                
-                                <div class="user-box">
-                                <input type="text" name="phone" id="phone" required="">
-                                <label>Ingresa tu telefono</label>
-                                </div>
-                                <div class="user-box">
-                                <input type="text" name="email" id="email"required="">
-                                <label>Ingresa tu Email</label>
-                                </div>
-                                <div class="user-box">
-                                <input type="text" name="contry" id="contry"required="">
-                                <label>Ingresa tu País</label>
-                                </div>
-                                <!--
-                                <div class="user-box">
-                                <input type="password" name="" required="">
-                                <label>Password</label>
-                                </div>
-                                -->
-                                <!-- <a href="{{ route('home')}}" value="submit" type="button"> 
-                                    <button class="a" value="submit" type="submit">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                Enviar                                
-                                    </button>
-                            </form>
-                            </div>
-                    </div>
-
-                        <!-- End Formulario -->
-
-            <!-- start barra informativa 
+            <!-- start barra informativa -->
             <div class="mdk-header-layout__content page-content ">
 
                 <div class="border-bottom-2 py-16pt navbar-light bg-white border-bottom-2">
@@ -541,7 +348,7 @@
                                     <i class="material-icons text-white">subscriptions</i>
                                 </div>
                                 <div class="flex">
-                                    <div class="card-title mb-4pt">8,000+ Courses</div>
+                                    <div class="card-title mb-4pt">8,000+ Estudiantes</div>
                                     <p class="card-subtitle text-70">Explore a wide range of skills.</p>
                                 </div>
                             </div>
@@ -550,7 +357,7 @@
                                     <i class="material-icons text-white">verified_user</i>
                                 </div>
                                 <div class="flex">
-                                    <div class="card-title mb-4pt">By Industry Experts</div>
+                                    <div class="card-title mb-4pt">Profesores expertos</div>
                                     <p class="card-subtitle text-70">Professional development from the best people.</p>
                                 </div>
                             </div>
@@ -559,21 +366,24 @@
                                     <i class="material-icons text-white">update</i>
                                 </div>
                                 <div class="flex">
-                                    <div class="card-title mb-4pt">Unlimited Access</div>
+                                    <div class="card-title mb-4pt">Acceso Ilimitado</div>
                                     <p class="card-subtitle text-70">Unlock Library and learn any topic with one subscription.</p>
                                 </div>
                             </div>
+                            --
                         </div>
                     </div>
                 </div>
 
                 <!-- end Barra informativa -->
 
+                <!-- Grid cursos -->
+
                 <div class="page-section border-bottom-2">
                     <div class="container page__container">
 
                         <div class="page-separator">
-                            <div class="page-separator__text">From the blog</div>
+                            <div class="page-separator__text">Nuestros programas</div>
                         </div>
 
                         <div class="row card-group-row">
@@ -581,34 +391,39 @@
                             <div class="col-md-6 col-lg-4 card-group-row__col">
 
                                 <div class="card card--elevated posts-card-popular overlay card-group-row__card">
-                                    <img src="{{ asset('images/paths/sketch_430x168.png')}}"
+                                    <img src="{{ asset('images/tecsacademy/TecsIntro.jpg')}}"
                                          alt=""
-                                         class="card-img">
+                                         class="card-img"> 
                                     <div class="fullbleed bg-primary"
                                          style="opacity: .5"></div>
+                                         
                                     <div class="posts-card-popular__content">
                                         <div class="card-body d-flex align-items-center">
                                             <div class="avatar-group flex">
-                                                <div class="avatar avatar-xs"
+                                                
+                                                <div class="avatar avatar-xs"                                                
                                                      data-toggle="tooltip"
                                                      data-placement="top"
-                                                     title="Janell D.">
-                                                    <a href=""><img src="{{ asset('images/256_luke-porter-261779-unsplash.jpg')}}"
-                                                             alt="Avatar"
-                                                             class="avatar-img rounded-circle"></a>
+                                                     title="">
+                                                    <a href=""></a>      
+                                                                                                                 
                                                 </div>
+                                                       
                                             </div>
+                                            <!--
                                             <a style="text-decoration: none;"
                                                class="d-flex align-items-center"
                                                href=""><i class="material-icons mr-1"
                                                    style="font-size: inherit;">remove_red_eye</i> <small>327</small></a>
+                                            -->
                                         </div>
                                         <div class="posts-card-popular__title card-body">
-                                            <small class="text-muted text-uppercase">sketch</small>
+                                            <small class="text-muted text-uppercase">TecsIntro</small>
                                             <a class="card-title"
-                                               href="blog-post.html">Merge Duplicates Inconsistent Symbols</a>
-                                        </div>
-                                    </div>
+                                               href="{{ route('tecsintro')}}">Prparate para el examen TECS</a>
+                                               
+                                        </div>                                        
+                                    </div>                                    
                                 </div>
 
                             </div>

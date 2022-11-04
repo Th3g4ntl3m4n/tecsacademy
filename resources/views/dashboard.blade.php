@@ -27,6 +27,11 @@ $user_type= Auth::user()->type;
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CRoboto:400,500%7CExo+2:600&display=swap"
               rel="stylesheet">
 
+               <!-- own Styles -->
+        <link type="text/css"
+              href="{{ asset('css/ownstyles.css')}}"
+              rel="stylesheet">
+
         <!-- Preloader -->
         <link type="text/css"
               href="{{ asset('vendor/spinkit.css')}}"
