@@ -31,5 +31,11 @@ class PageController extends Controller
     public function stage() {
         return view ('stage');
     }
+
+    public function satageTeacher() {
+        return view ('satageTeacher');
+    }
+
+   
 }
 

@@ -7,6 +7,8 @@ use App\Http\Controllers\showInformation;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProductRequestController;
 use App\Http\Controllers\UserPaymentController;
+use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\CursoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +26,7 @@ Route::controller(PageController::class)->group(function(){
     Route::get('/tecsintro',            'tecsIntro')->name('tecsintro');
     Route::get('/precios',            'pricing')->name('pricing');
     Route::get('/stage',            'stage')->name('stage');
+    Route::get('/satageTeacher',            'satageTeacher')->name('satageTeacher');
    
     
 });
@@ -82,7 +85,7 @@ Route::get('/showallusers', [showInformation::class, 'ShowAllUsers'])->name('sho
 Route::get('/counterView', [UserPaymentController::class, 'counter'])->name('counterView');
 
 /* Show Aproved users in teachers view*/
-Route::get('/teacherStudentsView', [UserPaymentController::class, 'teacher'])->name('teacherStudentsView');
+Route::get('/teacherStudentsView', [FeedbackController::class, 'ShowAllStudents'])->name('teacherStudentsView');
 
 /* Show Aproved users in counter view*/
 Route::get('/counterAprobed', [UserPaymentController::class, 'counterAprobed'])->name('counterAprobed');
@@ -93,6 +96,9 @@ Route::get('/counterAllPays', [UserPaymentController::class, 'counterAllPays'])-
 
 /* confirm pay */
 Route::post('/ClickonConfirmation', 'App\Http\Controllers\UserPaymentController@ClickonConfirmation')->name('ClickonConfirmation');
+
+/* Refuse pay */ 
+Route::post('/cliconDenegate', 'App\Http\Controllers\UserPaymentController@cliconDenegate')->name('cliconDenegate');
 
 
 /* Show All Products */
@@ -116,6 +122,17 @@ Route::post('miJqueryAjax','ProductRequestController@create');
 /* Formulario enviar correo bienvenida*/
 Route::post('/showallusers', 'App\Http\Controllers\ProductRequestController@clickOnSent')->name('clickOnSent');
 
+/* Enviar feedback Controller */
+Route::post('/sendFeedback', 'App\Http\Controllers\FeedbackController@sendFeedback')->name('sendFeedback');
+
+
+/* formulario Crear curso y/o clasa para el profesor (salon) */
+Route::get('/formNewCourse', function () {
+    return view('dashboard.createNewCourse');
+})->name('formNewCourse');
+
+/* Creat formulario de curso */
+Route::post('/createNewCourse', 'App\Http\Controllers\CursoController@createNewCourse')->name('createNewCourse');
 
 /*Ruta vista registrar producto */
 Route::get('/formProductRegister', function () {

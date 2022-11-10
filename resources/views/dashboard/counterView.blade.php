@@ -40,7 +40,7 @@
         <div id="response">
               <button class="btn btn-primary" id="aprobed" value="{{$payment['id']}}" onClick="Aprobed_click(this.value)">Confirmar Pago</button>
             
-              <button class="btn btn-danger"><a href="#">Rechazar Transaccion</a></button>
+              <button class="btn btn-danger"  id="refused" value="{{$payment['id']}}" onClick="Refused_click(this.value)">Rechazar Transaccion</button>
       </div>
         </td>
         </tr>
@@ -91,9 +91,36 @@
                 })
     
   }
+
 </script>
 
+<script type="text/javascript">
 
+function Refused_click (id_payment)
+{
+
+  $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+  $.ajax({
+    url: "{{ route('cliconDenegate')}}",
+    type: "POST",
+    data: {
+      id_payment: id_payment,
+    },
+    dataType: 'json',
+    success: function(response){
+      if(response){
+        document.getElementById("response").innerHTML = response;
+      }
+    }
+  })
+}
+
+</script>
 
 
     

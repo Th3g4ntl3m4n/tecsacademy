@@ -56,4 +56,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Product_Request::class);
     }
+
+    public function Feedback()
+    {
+        return $this->hasMany(Feedback::class);
+    }
 }

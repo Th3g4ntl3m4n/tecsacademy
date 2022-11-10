@@ -21,6 +21,7 @@ class UserPaymentController extends Controller
 
     //Funcion para mostrar los estudiantes en la vista teacherStudentsView que el pago (status) sea iguala 4, instanciamos el modelo del user_payment
 
+    /*
     public function teacher()
     {
         
@@ -30,6 +31,7 @@ class UserPaymentController extends Controller
         return view('dashboard.teacherStudentsView')->with('teacher_list', $teacher_list)->with('User', $user);
 
     }
+    */
 
      //Funcion para mostrar los pagos aprobados en la vista counterAprobed el pago (status) sea iguala 4, instanciamos el modelo del user_payment
 
@@ -90,7 +92,13 @@ class UserPaymentController extends Controller
         $payment_id = $request->id_payment;
 
         $payment = user_payment::find($payment_id);
-        $payment ->status = 4;     
+        $payment ->status = 6; 
+        
+        $payment->save();
+        $result = "Payment refused!";  
+
+        return response()->json($result);
+
 
     
     }

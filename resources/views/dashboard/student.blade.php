@@ -71,6 +71,71 @@ $url = 'https://checkout.payulatam.com/ppp-web-gateway-payu/'; // Producción
 		    background-color: #303956;
             padding:5px;
 		}
+
+        /*Contenedor del countdown*/
+.demo{
+    display: flex;
+    align-items: center;
+    width: 125px;
+    height: 125px;
+    margin: auto;
+}
+/*Elementos de primera linea*/
+.demo p{
+    text-align: center;
+    color: aliceblue;
+    font-weight: bold;
+    background: linear-gradient(to top, #005c97, #363795); 
+    margin: 3px;
+    font-size: 18px;
+    padding: 12px;
+    border-radius: 12px;
+    width: 100%;
+    cursor: pointer;
+}
+/*Elementos de segunda linea*/
+.demo p span{
+    font-weight: normal;
+    font-size: 12px;
+}
+/*Clases para cada elemento*/
+/*Clase para elementos de primera linea*/
+.demo .d,
+.demo .h,
+.demo .m,
+.demo .s{}
+/*Clase para elementos de segunda linea*/
+.demo .d span,
+.demo .h span,
+.demo .m span,
+.demo .s span{}
+
+
+/*SUSCRIBETE A SCRIPT CODE*/
+/*SUSCRIBETE A SCRIPT CODE*/
+.suscribete{
+    position: relative;
+    height: 10%;
+}
+.suscribete a{
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 35px;
+    width: 300px;
+    color: aliceblue;
+    font-size: 22px;
+    border-radius: 8px;
+    padding: 4px;    
+    background: linear-gradient(45deg,red 40%,#5411d3,#9711d3);
+    
+    
+}
+
 </style>
 
 @if(count($payment)>0)
@@ -79,22 +144,48 @@ $url = 'https://checkout.payulatam.com/ppp-web-gateway-payu/'; // Producción
             <div class="container">
                 <div class="row">
                     <div class="col-6">
-                        <div class="colorBody">
-                            <h3 Style="color:#fff;">Preparate para aprender</h3>
+
+                    <!-- Tarjeta izquierda -->
+                        <div class="colorBody" style="padding:30px">
+                            <h3 Style="color:#fff; ">Preparate para aprender</h3>
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s </p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s </p>                          
+                            
+                            <div class="row">                                
+                                    <div class="col-md-4 position-relative">
+                                        <!-- Contador -->
+                                        <!--Pequeño titulo-->
+                                            <h3 Style="color:#fff; font-size:20px">Tu clase empezará en :</h3>
+                                            <!--Contenedor del countdown-->
+                                            <div id="demo" class="demo"></div> 
+                                            <!--Contenedor visible al finalizar el countdown-->
+                                            <div id="info" class="info"></div>
+                                    </div>                                
+                                <div class="col position-relative bottom-0 start-50 translate-middle-x" style="left: 80px;">
+                                    <img src="{{ asset('images/tecsacademy/Estudiante2.png')}}" style="width:250px; height:350px;" alt="">
+                                </div>
+                            </div>
+                            
                             <br>
                             <br>
                             
                         </div>
-                        <div class="" id="cuenta"></div>
+                        
                     </div>
+                    <!-- End Tarjeta izquierda -->
+
+                    <!--  Tarjeta Derecha -->
+
                     <div class="col-6">
                         <img src="{{ asset('images/tecsacademy/TecsIntro.jpg')}}" style="width:500px;">
                     </div>
+
+                    <!-- End Tarjeta Derecha -->
                 </div>
             </div>
             <div class="container">
+            <br>
+            <br>
     <h3>Contactanos</h3>
             
                     <div class="row">
@@ -579,3 +670,52 @@ $url = 'https://checkout.payulatam.com/ppp-web-gateway-payu/'; // Producción
 
 
 
+<script>
+
+                            // Establecer la fecha en la que estamos contando hacia atrás
+var countDownDate = new Date("December 18, 2021 22:28:20").getTime();
+
+// Actualizar la cuenta regresiva cada 1 segundo
+var x = setInterval(function() {
+
+// Obtener la fecha y la hora de hoy
+  var now = new Date().getTime();
+    
+// Encuentre la distancia entre ahora y la fecha de la cuenta regresiva
+  var distance = countDownDate - now;
+    
+// Cálculos de tiempo para días, horas, minutos y segundos.
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+// Muestra el countdown"
+  document.getElementById("demo").innerHTML = 
+      "<p class='d'>" +days + "<br><span>Días</span></p>" + 
+     "<p class='h'>" +hours + "<br><span>Horas</span></p>" + 
+      "<p class='m'>" +minutes + "<br><span>Minutos</span></p>" + 
+     "<p class='s'>" + seconds + "<br><span>Segundos</span></p>";
+// Si la cuenta regresiva ha terminado, escribe un texto
+  if (distance < 0) {
+    clearInterval(x);
+//La clase info genera el contenido al finalizar el countdown
+//Configure los stylos con CSS o JS
+    var a=document.getElementsByClassName("info");
+      a[0].style.height="20vh";
+//Utilice el innerHTML para introducir elementos
+      a[0].innerHTML =   
+
+    "<div class='suscribete'>" + 
+    "<a href='https://www.youtube.com/channel/UCBuPzVcwT8gxV4-aCpp4BDA' target='_blank'>Ingresa al aula virtual</a>" +
+          "</div>";
+//El elemento con el id demo se oculta
+      document.getElementById("demo").style.display = "none";
+//Un pequeño script para borrar el elemento h3 de cabecera :)
+      const nodeList = document.querySelectorAll("h3");
+      nodeList[0].style.display = "none";
+
+  }
+}, 0);
+
+</script>
